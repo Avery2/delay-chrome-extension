@@ -1,14 +1,18 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css">
-  </head>
-  <body>
-    <h1>Settings</h1>
-    <label for="blockist">Blocklist</label><br/>
-    <textarea id="blockist" name="blockist" rows="4" cols="50">https://www.averychan.site/</textarea>
-    <button>Save</button>
+<head>
+  <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css">
+  <title>Settings</title>
+</head>
 
-    <script src="options.js"></script>
+<body>
+  <h1>Settings</h1>
+  <label for="defaultDelay">Default Unblock Time (minutes)</label>
+  <input id="defaultDelay" name="defaultDelay" type="number">
+  <label for="blockist">Blocklist</label><br />
+  <textarea id="blockist" name="blockist" rows="4" cols="50">https://www.averychan.site/</textarea>
+  <button>Save</button>
+
+  <script src="options.js"></script>
   </body>
 </html>
