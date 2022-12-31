@@ -16,7 +16,7 @@ function showTimeLeft() {
     }
     timeLeft.innerHTML = `You have <b>${msToTime(
       unblockedTimeLeft
-    )}</b> unblocked time left.`;
+    )}</b> of unblocked time left.`;
   });
   timer = setTimeout(showTimeLeft, 100);
 }
