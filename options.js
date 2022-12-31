@@ -1,10 +1,10 @@
 let defaultDelayButton = document.getElementById("defaultDelay");
 let clickFeedback = document.getElementById("clickFeedback");
 let saveButton = document.getElementById("saveButton");
+let blocklistArea = document.getElementById("blocklist");
 
 let delayValue = 15;
 chrome.storage.sync.get("defaultUnblockDuration", (data) => {
-  console.log({ "set delayvalue": data.defaultUnblockDuration });
   delayValue = data.defaultUnblockDuration;
   defaultDelayButton.value = delayValue;
 });
@@ -23,7 +23,20 @@ function fade(element) {
   }, 50);
 }
 
+blockUrls = [];
+chrome.storage.sync.get("blockUrls", (data) => {
+  blockUrls = data.blockUrls;
+  blocklistArea.value = blockUrls.join("\n");
+});
+
 function showSaved(event) {
+  // save block list
+  blockUrls = blocklistArea.value.split("\n");
+  chrome.storage.sync.set({ blockUrls: blockUrls }, () => {
+    blocklistArea.value = blockUrls.join("\n");
+    doBlockUrls(blockUrls);
+  });
+  // save duration
   chrome.storage.sync.set({ defaultUnblockDuration: defaultDelayButton.value });
   // show feedback save happened
   const feedback = document.createElement("p");
