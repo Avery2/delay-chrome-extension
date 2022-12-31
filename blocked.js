@@ -1,5 +1,4 @@
 // chrome.declarativeNetRequest
-let page = document.getElementById("buttonDiv");
 let button = document.getElementById("disableBlockButton");
 let redirectMessage = document.getElementById("redirectMessage");
 let disableInput = document.getElementById("disableInput");
