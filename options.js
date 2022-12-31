@@ -40,7 +40,7 @@ function showTimeLeft() {
   timer = setTimeout(showTimeLeft, 100);
 }
 
-let blockUrls = [];
+blockUrls = [];
 let unblockedTimeLeft = 0;
 chrome.storage.sync.get("blockUrls", (data) => {
   blockUrls = data.blockUrls;
