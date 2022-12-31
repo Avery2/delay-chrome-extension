@@ -1,4 +1,5 @@
 chrome.runtime.onInstalled.addListener(() => {
+  chrome.storage.sync.set({ defaultUnblockDuration: 10 });
 });
 
 chrome.alarms.onAlarm.addListener(() => {

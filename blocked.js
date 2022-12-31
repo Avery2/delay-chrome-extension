@@ -3,9 +3,13 @@ let button = document.getElementById("disableBlockButton");
 let redirectMessage = document.getElementById("redirectMessage");
 let disableInput = document.getElementById("disableInput");
 
-const DEFAULT_DISABLE = 0.2;
 
-disableInput.value = DEFAULT_DISABLE;
+let delayValue = 15;
+chrome.storage.sync.get("defaultUnblockDuration", (data) => {
+  console.log({ "set delayvalue": data.defaultUnblockDuration });
+  delayValue = data.defaultUnblockDuration;
+  disableInput.value = delayValue;
+});
 
 let url = null;
 
