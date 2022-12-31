@@ -40,7 +40,7 @@ chrome.runtime.onInstalled.addListener(() => {
   chrome.storage.sync.set({ blockUrls: DEFAULT_BLOCK_URLS });
 });
 
-blockUrls = [];
+let blockUrls = [];
 chrome.storage.sync.get("blockUrls", (data) => {
   blockUrls = data.blockUrls;
   doBlockUrls(blockUrls);
