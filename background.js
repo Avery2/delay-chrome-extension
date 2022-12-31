@@ -47,6 +47,7 @@ chrome.storage.sync.get("blockUrls", (data) => {
 });
 
 chrome.alarms.onAlarm.addListener(() => {
+  chrome.alarms.clearAll();
   doBlockUrls(blockUrls);
 });
 

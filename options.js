@@ -30,7 +30,7 @@ function showTimeLeft() {
   chrome.alarms.getAll((alarms) => {
     if (alarms.length !== 1) {
       doBlockUrls(blockUrls);
-      chrome.alarms.clearAll;
+      chrome.alarms.clearAll();
     }
     const alarm = alarms?.[0];
     if (alarm) {
