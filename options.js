@@ -54,6 +54,9 @@ function showSaved(event) {
   chrome.storage.sync.set({ blockUrls: blockUrls }, () => {
     blocklistArea.value = blockUrls.join("\n");
   });
+  // reset block list
+  doUnBlockUrls(blockUrls);
+  doBlockUrls(blockUrls);
   // save duration
   chrome.storage.sync.set({ defaultUnblockDuration: defaultDelayButton.value });
   // show feedback save happened

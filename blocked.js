@@ -42,11 +42,3 @@ function handleButtonClick(event) {
 }
 
 button.addEventListener("click", handleButtonClick);
-
-function doUnBlockUrls() {
-  chrome.declarativeNetRequest.getDynamicRules((rules) => {
-    chrome.declarativeNetRequest.updateDynamicRules({
-      removeRuleIds: rules.map((rule) => rule?.id),
-    });
-  });
-}

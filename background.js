@@ -19,6 +19,14 @@ function doBlockUrls(blockUrls) {
   });
 }
 
+function doUnBlockUrls() {
+  chrome.declarativeNetRequest.getDynamicRules((rules) => {
+    chrome.declarativeNetRequest.updateDynamicRules({
+      removeRuleIds: rules.map((rule) => rule?.id),
+    });
+  });
+}
+
 //stackoverflow.com/questions/19700283/how-to-convert-time-in-milliseconds-to-hours-min-sec-format-in-javascript
 function msToTime(duration) {
   var milliseconds = Math.floor((duration % 1000) / 100),
