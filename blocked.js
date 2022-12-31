@@ -18,7 +18,11 @@ chrome.storage.local.get("lastRedirectUrl", (data) => {
   url = data.lastRedirectUrl;
 });
 
-blockUrls = ["microsoft.com", "averychan.site"];
+blockUrls = [];
+chrome.storage.sync.get("blockUrls", (data) => {
+  blockUrls = data.blockUrls;
+  doBlockUrls(blockUrls);
+});
 
 function doBlockUrls(blockUrls) {
   blockUrls.forEach((domain, index) => {
