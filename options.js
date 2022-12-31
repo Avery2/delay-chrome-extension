@@ -24,19 +24,15 @@ function fade(element) {
   }, 50);
 }
 
-let blockUrls = [];
-let unblockedTimeLeft = 0;
-chrome.storage.sync.get("blockUrls", (data) => {
-  blockUrls = data.blockUrls;
-  blocklistArea.value = blockUrls.join("\n");
+let timer;
+clearTimeout(timer);
+function showTimeLeft() {
   chrome.alarms.getAll((alarms) => {
-    console.log({ alarms });
     if (alarms.length !== 1) {
       doBlockUrls(blockUrls);
       chrome.alarms.clearAll;
     }
     const alarm = alarms?.[0];
-    console.log({ alarm });
     if (alarm) {
       const { scheduledTime } = alarm;
       unblockedTimeLeft = scheduledTime - Date.now();
@@ -45,6 +41,15 @@ chrome.storage.sync.get("blockUrls", (data) => {
       unblockedTimeLeft
     )}</b> unblocked time left.`;
   });
+  timer = setTimeout(showTimeLeft, 100);
+}
+
+let blockUrls = [];
+let unblockedTimeLeft = 0;
+chrome.storage.sync.get("blockUrls", (data) => {
+  blockUrls = data.blockUrls;
+  blocklistArea.value = blockUrls.join("\n");
+  showTimeLeft();
 });
 
 function showSaved(event) {

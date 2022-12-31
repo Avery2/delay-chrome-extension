@@ -18,7 +18,7 @@ function showTimeLeft() {
       unblockedTimeLeft
     )}</b> unblocked time left.`;
   });
-  timer = setTimeout(showTimeLeft, 500);
+  timer = setTimeout(showTimeLeft, 100);
 }
 showTimeLeft();
 
