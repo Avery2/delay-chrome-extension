@@ -43,7 +43,6 @@ chrome.runtime.onInstalled.addListener(() => {
 let blockUrls = [];
 chrome.storage.sync.get("blockUrls", (data) => {
   blockUrls = data.blockUrls;
-  doBlockUrls(blockUrls);
 });
 
 chrome.alarms.onAlarm.addListener(() => {

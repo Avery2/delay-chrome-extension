@@ -24,11 +24,7 @@ chrome.storage.sync.get("blockUrls", (data) => {
 
 function handleButtonClick(event) {
   // disable all blocks
-  chrome.declarativeNetRequest.getDynamicRules((rules) => {
-    chrome.declarativeNetRequest.updateDynamicRules({
-      removeRuleIds: rules.map((rule) => rule?.id),
-    });
-  });
+  doUnBlockUrls();
 
   chrome.alarms.clearAll();
   let delay = parseFloat(disableInput.value);
@@ -46,3 +42,11 @@ function handleButtonClick(event) {
 }
 
 button.addEventListener("click", handleButtonClick);
+
+function doUnBlockUrls() {
+  chrome.declarativeNetRequest.getDynamicRules((rules) => {
+    chrome.declarativeNetRequest.updateDynamicRules({
+      removeRuleIds: rules.map((rule) => rule?.id),
+    });
+  });
+}
