@@ -21,7 +21,6 @@ chrome.storage.local.get("lastRedirectUrl", (data) => {
 blockUrls = [];
 chrome.storage.sync.get("blockUrls", (data) => {
   blockUrls = data.blockUrls;
-  doBlockUrls(blockUrls);
 });
 
 function doBlockUrls(blockUrls) {
